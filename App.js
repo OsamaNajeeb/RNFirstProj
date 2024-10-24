@@ -1,22 +1,12 @@
-
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
-
-
-
+import {Button, Text, View} from 'react-native';
 
 const App = () => {
-  return(
+  return (
     <View>
-      <Text>Dodo</Text>
-      <Text>coco</Text>
-      <Text>Dodo</Text>
-      <Text>fofo</Text>
-      <Text>hoho</Text>
+      <Text style={{fontSize: 32}}>React-Native</Text>
+      <Button title="Sd">Sd</Button>
     </View>
-  )
-}
+  );
+};
 export default App;

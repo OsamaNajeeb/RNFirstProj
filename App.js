@@ -1,32 +1,26 @@
-import {useState} from 'react';
-import {Button, Text, View, StyleSheet} from 'react-native';
-import OutFormat from './themes/style';
+import React, {useState} from 'react';
+import {TextInput, View, StyleSheet, Text, Button} from 'react-native';
 
 const App = () => {
+  const [name, setName] = useState('Dood');
   return (
     <View>
-      <Text
-        style={{
-          fontSize: 20,
-          color: 'blue',
-          fontWeight: 'bold',
-          backgroundColor: 'black',
-          padding: 20,
-        }}>
-        Blue
-      </Text>
-
-      <Text style={format.textBox}>Red</Text>
-      <Text style={OutFormat.textBox}>O algo</Text>
-      <Text style={[format.textBox, OutFormat.textBox, {marginTop: 10}]}>
-        dude
-      </Text>
+      <Text>Hello:{name}</Text>
+      <TextInput
+        style={format.TextInput}
+        placeholder="Fine?"
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+      <Button title="But" onPress={() => setName('')} />
     </View>
   );
 };
 
+export default App;
+
 const format = StyleSheet.create({
-  textBox: {
+  TextInput: {
     color: 'red',
     fontSize: 30,
     backgroundColor: 'grey',
@@ -41,5 +35,3 @@ const format = StyleSheet.create({
     borderWidth: 5,
   },
 });
-
-export default App;

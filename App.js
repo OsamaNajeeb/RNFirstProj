@@ -1,53 +1,51 @@
 import React, {useState} from 'react';
-import {TextInput, View, StyleSheet, Text, Button} from 'react-native';
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Text,
+  Button,
+  FlatList,
+  NativeModules,
+} from 'react-native';
+import style from './themes/style';
 
 const App = () => {
-  const [name, setName] = useState('');
-  const [email, setE] = useState('');
-  const [password, setP] = useState('');
-  const [display, setDisplace] = useState(false);
-
-  const resetFormData = () => {
-    setDisplace(false);
-    setName('');
-    setE('');
-    setP('');
-  };
+  const users = [
+    {
+      id: 1,
+      name: 'Anvil',
+    },
+    {
+      id: 2,
+      name: 'Sam Hyde',
+    },
+    {
+      id: 3,
+      name: 'Peter Griffin',
+    },
+    {
+      id: 4,
+      name: 'Brucie',
+    },
+    {
+      id: 10,
+      name: 'Tony Vercitti',
+    },
+  ];
 
   return (
     <View>
-      <TextInput
-        style={format.TextInput}
-        placeholder="Enter Name Obsessed Brimstone"
-        onChangeText={text => setName(text)}
-        value={name}
-      />
-      <TextInput
-        style={format.TextInput}
-        placeholder="Enter Email Obsessed Brimstone"
-        onChangeText={text => setE(text)}
-        value={email}
-      />
-      <TextInput
-        style={format.TextInput}
-        placeholder="Enter Password Obsessed Brimstone"
-        onChangeText={text => setP(text)}
-        secureTextEntry={true}
-        value={password}
-      />
-      <View style={{margin: 20}}>
-        <Button title="Print Details" onPress={() => setDisplace(true)} />
-      </View>
-      <Button title="Clear Details" color={'green'} onPress={resetFormData} />
-      <View>
-        {display ? (
-          <View>
-            <Text>User Name : {name}</Text>
-            <Text>User Email : {email}</Text>
-            <Text>User Password : {password}</Text>
+      <FlatList
+        data={users}
+        renderItem={({item}) => (
+          <View style={format.listItem}>
+            <Text style={format.text}>{item.name}</Text>
+            <Text style={format.text}>{item.id}</Text>
           </View>
-        ) : null}
-      </View>
+        )}
+        keyExtractor={item => item.id.toString()}
+      />
     </View>
   );
 };
@@ -55,18 +53,23 @@ const App = () => {
 export default App;
 
 const format = StyleSheet.create({
-  TextInput: {
-    color: 'black',
+  listItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    backgroundColor: 'black',
+    // fontWeight: '800',
+    // marginHorizontal: 10,
+    // borderRadius: 20,
+    // height: 60,
+    // textAlign: 'center',
+    // textAlignVertical: 'center',
+    borderColor: 'gold',
+    borderWidth: 1,
+    margin: 10,
+  },
+  text: {
+    color: 'gold',
     fontSize: 15,
-    backgroundColor: 'white',
-    // padding: 20,
-    fontWeight: '800',
-    marginHorizontal: 10,
-    borderRadius: 20,
-    height: 60,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    borderColor: 'black',
-    borderWidth: 5,
   },
 });

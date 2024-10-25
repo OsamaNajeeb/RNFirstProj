@@ -39,7 +39,7 @@ const App = () => {
     },
     {
       id: 7,
-      name: 'Red Head Chan',
+      name: 'R.H.C',
     },
     {
       id: 8,
@@ -64,20 +64,45 @@ const App = () => {
   ];
 
   return (
-    <View>
-      <ScrollView style={{marginBottom: 20}}>
+    <ScrollView style={{marginBottom: 20}}>
+      <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
         {users.map(item => (
-          <View style={format.listItem}>
-            <Text style={format.text}>{item.id}</Text>
-            <Text style={format.text}>{item.name}</Text>
+          <View style={gridStyle.listItem}>
+            <Text style={gridStyle.text}>{item.id}</Text>
+            <Text style={gridStyle.text}>{item.name}</Text>
           </View>
         ))}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default App;
+
+const gridStyle = StyleSheet.create({
+  listItem: {
+    color: 'gold',
+    fontSize: 15,
+    padding: 5,
+    backgroundColor: 'black',
+    // fontWeight: '800',
+    // marginHorizontal: 10,
+    // borderRadius: 20,
+    height: 60,
+    width: 100,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    borderColor: 'gold',
+    borderWidth: 1,
+    margin: 10,
+  },
+
+  text: {
+    color: 'gold',
+    fontSize: 15,
+    textAlign: 'center',
+  },
+});
 
 const ze_Styles = StyleSheet.create({
   listItem: {

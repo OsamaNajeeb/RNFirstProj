@@ -8,6 +8,7 @@ import {
   FlatList,
   NativeModules,
   ScrollView,
+  SectionList,
 } from 'react-native';
 import style from './themes/style';
 import UserData from './components/UserData';
@@ -16,71 +17,63 @@ const App = () => {
   const users = [
     {
       id: 1,
-      name: 'Abby',
-      email: 'Abby@h',
+      name: 'Hana',
+      data: [
+        '434cm height',
+        '210cm width',
+        'White Skin',
+        'Blonde Hair',
+        'Blue Eyes',
+      ],
     },
     {
       id: 2,
-      name: 'Liara',
-      email: 'Liara@h',
+      name: 'Umbreen',
+      data: [
+        '417cm height',
+        '198cm width',
+        'Light Dark Skin',
+        'Dark Brown Hair',
+        'Dark Brown Eyes',
+      ],
     },
     {
       id: 3,
       name: 'Aparna',
-      email: 'Aparna@h',
+      data: [
+        '409cm height',
+        '190cm width',
+        'Semi-Dark Skin',
+        'Dark Brown Hair',
+        'Dark Brown Eyes',
+      ],
     },
     {
       id: 4,
       name: 'Nancy',
-      email: 'Nancy@h',
-    },
-    {
-      id: 5,
-      name: 'Mizuki',
-      email: 'Mizuki@h',
-    },
-    {
-      id: 6,
-      name: 'Eimaan',
-      email: 'Eimaan@h',
-    },
-    {
-      id: 7,
-      name: 'R.H.C',
-      email: 'R.H.C@h',
-    },
-    {
-      id: 8,
-      name: 'Nadia',
-      email: 'Nadia@h',
-    },
-    {
-      id: 9,
-      name: 'EDI',
-      email: 'EDI@h',
-    },
-    {
-      id: 10,
-      name: 'Anna',
-      email: 'Anna@h',
-    },
-    {
-      id: 11,
-      name: 'Umbreen',
-      email: 'Umbreen@h',
-    },
-    {
-      id: 12,
-      name: 'Hana',
-      email: 'Hana@h',
+      data: [
+        '431cm height',
+        '206cm width',
+        'Heavy White Skin',
+        'Ginger Hair',
+        'Green Eyes',
+      ],
     },
   ];
-
   return (
     <View>
-      <FlatList
-        data={users}
-        renderItem={({item}) => <UserData item={item} />}
+      <SectionList
+        sections={users}
+        renderItem={({item}) => (
+          <Text style={{fontSize: 15, marginStart: 30}}>
+            {'> '}
+            {item}
+          </Text>
+        )}
+        renderSectionHeader={({section: {name}}) => (
+          <Text style={{fontSize: 20, color: 'gold'}}>{name}</Text>
+        )}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
   );

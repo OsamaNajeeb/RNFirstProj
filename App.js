@@ -15,45 +15,27 @@ import UserData from './components/UserData';
 import Mistress from './components/Mistress';
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(100);
+  const [show, setShow] = useState(false);
+  return (
+    <View style={{padding: 20}}>
+      <Text style={{fontSize: 30, textAlign: 'center', marginVertical: 20}}>
+        Show/Hide Garbage
+      </Text>
+      <Button title="Hide" onPress={() => setShow(!show)} />
+      {show ? <User /> : null}
+    </View>
+  );
+};
 
-  // useEffect(() => {
-  //   console.warn('Obsessed');
-  // }, [count]);
-
-  // useEffect(() => {
-  //   console.warn('Brimstone');
-  // }, [data]);
-
+const User = () => {
   return (
     <View>
-      <Text style={{fontSize: 30}}>
-        {data} O algo {count}
-      </Text>
-      <Button title="Update" onPress={() => setCount(count + 1)}></Button>
-      <Button title="Update" onPress={() => setData(data + 1)}></Button>
-      <Users info={{data, count}} />
+      <Text style={{fontSize: 30, color: 'blue'}}>Oops</Text>
     </View>
   );
 };
 
 export default App;
-
-const Users = props => {
-  console.warn(props.info);
-  useEffect(() => {
-    console.warn('run this code when data is updated');
-  }, [props.info.data]);
-  return (
-    <View>
-      <Text style={{fontSize: 30}}>data: {props.info.data}</Text>
-      <Text style={{fontSize: 30}}>count: {props.info.count}</Text>
-      {/* <Button title="Update" onPress={() => setCount(count + 1)}></Button>
-      <Button title="Update" onPress={() => setData(data + 1)}></Button> */}
-    </View>
-  );
-};
 
 const format = StyleSheet.create({
   listItem: {

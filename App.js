@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   TextInput,
   View,
@@ -14,35 +14,19 @@ import style from './themes/style';
 import UserData from './components/UserData';
 import Mistress from './components/Mistress';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'Umbreen',
-      age: 10,
-    };
-  }
+const App = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    console.warn('Bye');
+  }, []);
 
-  updateName(val) {
-    this.setState({name: val});
-  }
-
-  render() {
-    return (
-      <View style={{padding: 20}}>
-        <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>
-          {this.state.name}
-        </Text>
-        <TextInput
-          placeholder="Enter Name Saar"
-          onChangeText={text => this.updateName(text)}
-        />
-        <Button title="Click Me >:)" onPress={this.fruit} />
-        <Mistress name={this.state.name} />
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <Text style={{fontSize: 30}}>Life Cycle {count}</Text>
+      <Button title="Update" onPress={() => setCount(count + 1)}></Button>
+    </View>
+  );
+};
 
 export default App;
 

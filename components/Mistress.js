@@ -16,10 +16,10 @@ class Mistress extends Component {
     return (
       <View style={{marginVertical: 20}}>
         <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>
-          Dood
+          {this.props.name}
         </Text>
-        <TextInput placeholder="Enter Name Saar" />
-        <Button title="Click Me >:)" />
+        <TextInput placeholder={this.props.name} />
+        <Button title={this.props.name} />
       </View>
     );
   }

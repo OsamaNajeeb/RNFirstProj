@@ -15,18 +15,30 @@ import UserData from './components/UserData';
 import Mistress from './components/Mistress';
 
 class App extends Component {
-  fruit = () => {
-    console.warn('Tomoto');
-  };
+  constructor() {
+    super();
+    this.state = {
+      name: 'Umbreen',
+      age: 10,
+    };
+  }
+
+  updateName(val) {
+    this.setState({name: val});
+  }
+
   render() {
     return (
       <View style={{padding: 20}}>
         <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>
-          Dood
+          {this.state.name}
         </Text>
-        <TextInput placeholder="Enter Name Saar" />
+        <TextInput
+          placeholder="Enter Name Saar"
+          onChangeText={text => this.updateName(text)}
+        />
         <Button title="Click Me >:)" onPress={this.fruit} />
-        <Mistress />
+        <Mistress name={this.state.name} />
       </View>
     );
   }

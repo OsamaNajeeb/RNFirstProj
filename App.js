@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Component, useState} from 'react';
 import {
   TextInput,
   View,
@@ -12,72 +12,25 @@ import {
 } from 'react-native';
 import style from './themes/style';
 import UserData from './components/UserData';
+import Mistress from './components/Mistress';
 
-const App = () => {
-  const users = [
-    {
-      id: 1,
-      name: 'Hana',
-      data: [
-        '434cm height',
-        '210cm width',
-        'White Skin',
-        'Blonde Hair',
-        'Blue Eyes',
-      ],
-    },
-    {
-      id: 2,
-      name: 'Umbreen',
-      data: [
-        '417cm height',
-        '198cm width',
-        'Light Dark Skin',
-        'Dark Brown Hair',
-        'Dark Brown Eyes',
-      ],
-    },
-    {
-      id: 3,
-      name: 'Aparna',
-      data: [
-        '409cm height',
-        '190cm width',
-        'Semi-Dark Skin',
-        'Dark Brown Hair',
-        'Dark Brown Eyes',
-      ],
-    },
-    {
-      id: 4,
-      name: 'Nancy',
-      data: [
-        '431cm height',
-        '206cm width',
-        'Heavy White Skin',
-        'Ginger Hair',
-        'Green Eyes',
-      ],
-    },
-  ];
-  return (
-    <View>
-      <SectionList
-        sections={users}
-        renderItem={({item}) => (
-          <Text style={{fontSize: 15, marginStart: 30}}>
-            {'> '}
-            {item}
-          </Text>
-        )}
-        renderSectionHeader={({section: {name}}) => (
-          <Text style={{fontSize: 20, color: 'gold'}}>{name}</Text>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </View>
-  );
-};
+class App extends Component {
+  fruit = () => {
+    console.warn('Tomoto');
+  };
+  render() {
+    return (
+      <View style={{padding: 20}}>
+        <Text style={{textAlign: 'center', fontSize: 20, fontWeight: 'bold'}}>
+          Dood
+        </Text>
+        <TextInput placeholder="Enter Name Saar" />
+        <Button title="Click Me >:)" onPress={this.fruit} />
+        <Mistress />
+      </View>
+    );
+  }
+}
 
 export default App;
 

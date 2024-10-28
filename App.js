@@ -28,6 +28,14 @@ const App = () => {
 };
 
 const User = () => {
+  let timer = setInterval(() => {
+    console.warn('Timer Initiated');
+  }, 2000);
+
+  useEffect(() => {
+    return () => clearInterval(timer);
+  });
+
   return (
     <View>
       <Text style={{fontSize: 30, color: 'blue'}}>Oops</Text>
